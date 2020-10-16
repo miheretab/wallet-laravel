@@ -8,3 +8,4 @@ Do the follwing instruction to install:
 - cp .env.example .env
 
 
+You can register (/register), login (/login), and after login in home page (/home), you can see to use token and buy token.
