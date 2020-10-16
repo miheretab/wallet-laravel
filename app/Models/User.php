@@ -40,4 +40,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the wallets.
+     */
+    public function wallets()
+    {
+        return $this->hasMany('App\Models\Wallet');
+    }
+
+    /**
+     * Get the active wallets.
+     */
+    public function getActiveWalletsAttribute()
+    {
+        return $this->wallets()->where('used', false);
+    }
+
+    /**
+     * Get the number of active wallets.
+     */
+    public function getActiveWalletsCountAttribute()
+    {
+        return $this->active_wallets->count();
+    }
+
+    /**
+     * Get the one of active wallets.
+     */
+    public function getActiveWalletAttribute()
+    {
+        return $this->active_wallets->first();
+    }
 }
